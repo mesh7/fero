@@ -1,13 +1,17 @@
 <script setup>
-import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-const count = ref(0)
+const router = useRouter()
+
+const navigateToPriceDetails = () => {
+    router.push({ name: 'PriceDetailsPage'})
+}
 </script>
 
 <template>
-    <p>
-    Landing page
-    </p>
+    <a @click="navigateToPriceDetails">
+    Price Details page
+    </a>
 </template>
 
 <style scoped>
