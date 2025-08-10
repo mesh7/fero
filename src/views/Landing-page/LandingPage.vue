@@ -10,7 +10,7 @@ const navigateToPriceDetails = () => {
 
 <template>
     <a @click="navigateToPriceDetails">
-    Price Details page
+    Landing page
     </a>
 </template>
 

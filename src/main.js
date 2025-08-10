@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
 import "./style.css";
+import router from './router/index';
 import App from "./App.vue";
 
 const app = createApp(App);
@@ -9,9 +10,7 @@ const app = createApp(App);
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
-    options: {
-      darkModeSelector: ".dark",
-    },
   },
 });
+app.use(router);
 app.mount("#app");
