@@ -43,7 +43,7 @@ const navigateToGithub = () => {
     <!-- Content -->
     <div class="md:w-1/2 text-center md:text-left">
       <h1
-        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-indigo-400 md:text-5xl lg:text-6xl dark:text-white"
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-red-400 md:text-5xl lg:text-6xl dark:text-white"
       >
         Track the price
       </h1>
