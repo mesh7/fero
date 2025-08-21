@@ -1,14 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const count = ref(0)
+import PriceCard from "../../components/price-card/PriceCard.vue";
+
+const count = ref(0);
 </script>
 
 <template>
-    <p>
+  <p>
     Price tracker page
-    </p>
+    <PriceCard></PriceCard>
+  </p>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

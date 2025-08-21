@@ -6,7 +6,7 @@ const count = ref(0)
 
 <template>
     <p>
-    Price tracker
+    Price Card
     </p>
 </template>
 

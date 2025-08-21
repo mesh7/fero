@@ -1,7 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { useRouter } from "vue-router";
+
 import Button from "primevue/button";
 import ToggleSwitch from "primevue/toggleswitch";
+
+import SearchBar from "../../components/search-bar/SearchBar.vue";
 
 const router = useRouter();
 
@@ -29,9 +32,10 @@ const navigateToGithub = () => {
       />
       <h1 class="text-2xl font-bold">Fero</h1>
     </div>
-    <nav class="space-x-4">
-      <a href="#" class="text-gray-600 hover:text-blue-600">Fero1</a>
-      <a href="#" class="text-gray-600 hover:text-blue-600">Fero2</a>
+    <nav class="space-x-6">
+      <span class="pi pi-search" style="font-size: 1.5rem"></span>
+      <span class="pi pi-user" style="font-size: 1.5rem"></span>
+      <span class="pi pi-heart" style="font-size: 1.5rem"></span>
       <ToggleSwitch size="small" @click="toggleDarkMode" />
     </nav>
   </header>
@@ -42,31 +46,22 @@ const navigateToGithub = () => {
   >
     <!-- Content -->
     <div class="md:w-1/2 text-center md:text-left">
+      <p class="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
+        Track and monitors the prices of products over time
+      </p>
       <h1
         class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-red-400 md:text-5xl lg:text-6xl dark:text-white"
       >
-        Track the price
+        <span class="text-gray-600">Track the</span>
+        Price
       </h1>
       <h6 class="mb-4 text-2xl font-extrabold text-gray-500 dark:text-white">
-        Track the price
+        This online tool Capture, Process & Stores all the price-related
+        information. Price Tracker store & display this information in an
+        organized & meaningful full way.
       </h6>
-      <p class="mt-6 text-lg text-gray-900 dark:text-white">Track the price</p>
       <div class="space-x-4">
-        <div class="buttons mt-10">
-          <Button
-            class="mr-6"
-            style="
-              background-color: var(--color-indigo-400);
-              border: 2px solid var(--color-indigo-400);
-            "
-            id="start-button"
-            severity="primary"
-            rounded
-            size="large"
-            @click="navigateToPricePage"
-            ><p class="mx-3 font-semibold text-white">Let's start</p>
-          </Button>
-        </div>
+        <SearchBar></SearchBar>
       </div>
     </div>
 
@@ -85,7 +80,7 @@ const navigateToGithub = () => {
       <span class="flex justify-center">
         <Button
           icon="pi pi-github"
-          style="color: var(--color-indigo-400)"
+          style="color: var(--color-red-400)"
           variant="text"
           severity="secondary"
           rounded
