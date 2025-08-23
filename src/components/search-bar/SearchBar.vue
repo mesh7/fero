@@ -6,12 +6,16 @@ const getWordMeaning = () => {};
 </script>
 
 <template>
-  <section class="">
-    <div class="input-container flex justify-center">
-      <InputText type="text" v-model="searchText" placeholder="Search..." />
-      <div class="buttons mt-10">
+  <section>
+    <div class="flex">
+      <InputText
+        type="text"
+        class="mr-6"
+        v-model="searchText"
+        placeholder="Search..."
+      />
+      <div class="buttons">
         <Button
-          class="mr-6"
           style="
             background-color: var(--color-red-400);
             border: 2px solid var(--color-red-400);

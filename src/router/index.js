@@ -4,8 +4,16 @@ import LandingPage from "../views/Landing-page/LandingPage.vue";
 import PriceDetailsPage from "../views/Price-details-page/PriceDetailsPage.vue";
 
 const routes = [
-  { path: "/", name: "LandingPage", component: LandingPage },
-  { path: "/price-details",  name: "PriceDetailsPage", component: PriceDetailsPage },
+  {
+    path: "/",
+    name: "LandingPage",
+    component: LandingPage,
+  },
+  {
+    path: "/price-details",
+    name: "PriceDetailsPage",
+    component: PriceDetailsPage,
+  },
 ];
 
 const router = createRouter({

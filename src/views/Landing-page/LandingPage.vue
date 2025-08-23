@@ -9,7 +9,7 @@ import SearchBar from "../../components/search-bar/SearchBar.vue";
 const router = useRouter();
 
 const navigateToPricePage = () => {
-  router.push({ name: "CodePage" });
+  router.push({ name: "PriceDetailsPage" });
 };
 
 const toggleDarkMode = () => {
@@ -26,16 +26,37 @@ const navigateToGithub = () => {
   <header class="flex justify-between items-center px-8 py-4">
     <div class="flex">
       <img
-        src="../../assets/morseo_logo.SVG"
+        src="../../assets/logo_round.SVG"
         alt="Morseo Logo"
         class="mr-2 w-6 h-6"
       />
       <h1 class="text-2xl font-bold">Fero</h1>
     </div>
-    <nav class="space-x-6">
-      <span class="pi pi-search" style="font-size: 1.5rem"></span>
-      <span class="pi pi-user" style="font-size: 1.5rem"></span>
-      <span class="pi pi-heart" style="font-size: 1.5rem"></span>
+    <nav class="space-x-2">
+      <Button
+        icon="pi pi-search"
+        severity="contrast"
+        variant="text"
+        rounded
+        aria-label="Search"
+        size="large"
+      />
+      <Button
+        icon="pi pi-user"
+        severity="contrast"
+        variant="text"
+        rounded
+        aria-label="User"
+        size="large"
+      />
+      <Button
+        icon="pi pi-heart"
+        severity="contrast"
+        variant="text"
+        rounded
+        aria-label="Heart"
+        size="large"
+      />
       <ToggleSwitch size="small" @click="toggleDarkMode" />
     </nav>
   </header>
@@ -55,23 +76,20 @@ const navigateToGithub = () => {
         <span class="text-gray-600">Track the</span>
         Price
       </h1>
-      <h6 class="mb-4 text-2xl font-extrabold text-gray-500 dark:text-white">
+      <h6 class="mb-4 text-2xl font-semibold text-gray-500 dark:text-white">
         This online tool Capture, Process & Stores all the price-related
         information. Price Tracker store & display this information in an
         organized & meaningful full way.
       </h6>
-      <div class="space-x-4">
-        <SearchBar></SearchBar>
-      </div>
+      <SearchBar></SearchBar>
     </div>
 
     <!-- Hero Image -->
     <div class="card md:w-1/2 mb-10 md:ml-4 md:mb-0">
-      <img
-        src="../../assets/hero_image.SVG"
-        alt="Morseo Hero Image"
-        class="p-8 w-full h-auto"
-      />
+      <div class="glass-card">
+        <h2>Glassmorphism Card</h2>
+        <p>This card has a frosted-glass effect and a soft bottom blend.</p>
+      </div>
     </div>
   </section>
   <section>
@@ -93,58 +111,40 @@ const navigateToGithub = () => {
 </template>
 
 <style scoped>
-/* Glassmorphism card effect */
-.card {
-  backdrop-filter: blur(2px) saturate(99%);
-  -webkit-backdrop-filter: blur(2px) saturate(99%);
-  background-color: rgba(255, 255, 255, 0.26);
-  border-radius: 12px;
-  border: 1px solid rgba(209, 213, 219, 0.3);
-}
-
 .glass-card {
-  width: 240px;
-  height: 360px;
-  background: rgba(255, 255, 255, 0.11);
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
+  width: 400px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 20px 10px rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-}
-
-.glass-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
+  padding: 20px;
+  color: #fff;
 }
 
 .glass-card::after {
   content: "";
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 1px;
-  height: 100%;
+  width: 100%;
+  height: 40%;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.8),
+    to bottom,
     transparent,
-    rgba(255, 255, 255, 0.3)
+    rgba(255, 255, 255, 0.05)
   );
+}
+
+.glass-card h2 {
+  margin-top: 0;
+}
+
+.glass-card p {
+  margin-bottom: 0;
 }
 </style>
