@@ -1,7 +1,9 @@
 <script setup>
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 import Button from "primevue/button";
+import Carousel from "primevue/carousel";
 import ToggleSwitch from "primevue/toggleswitch";
 
 import SearchBar from "../../components/search-bar/SearchBar.vue";
@@ -19,20 +21,58 @@ const toggleDarkMode = () => {
 const navigateToGithub = () => {
   window.location.href = "https://github.com/mesh7";
 };
+
+const products = ref([
+  {
+    name: "Watch",
+    image:
+      "https://primefaces.org/cdn/primevue/images/product/bamboo-watch.jpg",
+    price: 65,
+  },
+  {
+    name: "Black Watch",
+    image: "https://primefaces.org/cdn/primevue/images/product/black-watch.jpg",
+    price: 72,
+  },
+  {
+    name: "Blue Band",
+    image: "https://primefaces.org/cdn/primevue/images/product/blue-band.jpg",
+    price: 79,
+  },
+  // Add more items as needed
+]);
+
+const responsiveOptions = ref([
+  {
+    breakpoint: "1024px",
+    numVisible: 3,
+    numScroll: 3,
+  },
+  {
+    breakpoint: "768px",
+    numVisible: 2,
+    numScroll: 2,
+  },
+  {
+    breakpoint: "560px",
+    numVisible: 1,
+    numScroll: 1,
+  },
+]);
 </script>
 
 <template>
   <!-- Navigation Header -->
-  <header class="flex justify-between items-center px-8 py-4">
-    <div class="flex">
+  <header class="flex justify-between px-8 py-4">
+    <div class="flex items-center">
       <img
         src="../../assets/logo_round.SVG"
         alt="Morseo Logo"
-        class="mr-2 w-6 h-6"
+        class="mr-3 w-10 h-10"
       />
-      <h1 class="text-2xl font-bold">Fero</h1>
+      <h1 class="text-3xl font-bold text-red-400">Fero</h1>
     </div>
-    <nav class="space-x-2">
+    <nav class="flex items-center space-x-2">
       <Button
         icon="pi pi-search"
         severity="contrast"
@@ -66,17 +106,14 @@ const navigateToGithub = () => {
     class="flex flex-col-reverse md:flex-row items-center justify-between px-8 py-20 max-w-7xl mx-auto"
   >
     <!-- Content -->
-    <div class="md:w-1/2 text-center md:text-left">
-      <p class="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
-        Track and monitors the prices of products over time
-      </p>
+    <div class="md:h-1/2 text-center md:text-left">
       <h1
         class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-red-400 md:text-5xl lg:text-6xl dark:text-white"
       >
-        <span class="text-gray-600">Track the</span>
-        Price
+        <span class="text-gray-600">Track the price using</span>
+        Fero
       </h1>
-      <h6 class="mb-4 text-2xl font-semibold text-gray-500 dark:text-white">
+      <h6 class="mt-8 text-2xl font-semibold text-gray-500 dark:text-white">
         This online tool Capture, Process & Stores all the price-related
         information. Price Tracker store & display this information in an
         organized & meaningful full way.
@@ -84,16 +121,41 @@ const navigateToGithub = () => {
       <SearchBar></SearchBar>
     </div>
 
-    <!-- Hero Image -->
-    <div class="card md:w-1/2 mb-10 md:ml-4 md:mb-0">
-      <div class="glass-card">
-        <h2>Glassmorphism Card</h2>
-        <p>This card has a frosted-glass effect and a soft bottom blend.</p>
-      </div>
+    <!-- Carousel -->
+    <div class="md:h-1/2 text-center md:text-left">
+      <Carousel
+        :value="products"
+        :numVisible="3"
+        :numScroll="1"
+        :responsiveOptions="responsiveOptions"
+        circular
+        :autoplayInterval="3000"
+      >
+        <template #item="slotProps">
+          <div
+            class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4"
+          >
+            <div class="mb-4">
+              <div class="relative mx-auto">
+                <img
+                  :src="slotProps.data.image"
+                  :alt="slotProps.data.name"
+                  class="w-full rounded"
+                />
+              </div>
+            </div>
+            <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
+            <div class="mt-0 font-semibold text-xl">
+              ${{ slotProps.data.price }}
+            </div>
+          </div>
+        </template>
+      </Carousel>
     </div>
   </section>
+
   <section>
-    <footer class="flex flex-col mt-auto pt-4">
+    <footer class="flex-col mt-auto pt-4">
       <P class="text-center">Made with ❤️ by Mesh</P>
       <span class="flex justify-center">
         <Button
@@ -111,40 +173,13 @@ const navigateToGithub = () => {
 </template>
 
 <style scoped>
-.glass-card {
-  width: 400px;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-  padding: 20px;
-  color: #fff;
-}
-
-.glass-card::after {
-  content: "";
-  position: absolute;
+.footer {
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.05)
-  );
-}
-
-.glass-card h2 {
-  margin-top: 0;
-}
-
-.glass-card p {
-  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

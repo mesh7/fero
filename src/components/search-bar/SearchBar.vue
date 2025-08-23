@@ -7,12 +7,12 @@ const getWordMeaning = () => {};
 
 <template>
   <section>
-    <div class="flex">
+    <div class="flex mt-12">
       <InputText
         type="text"
-        class="mr-6"
+        class="mr-6 rounded-3xl w-sm"
         v-model="searchText"
-        placeholder="Search..."
+        placeholder="Enter product link"
       />
       <div class="buttons">
         <Button
@@ -25,7 +25,7 @@ const getWordMeaning = () => {};
           rounded
           size="large"
           @click="navigateToPricePage"
-          ><p class="mx-3 font-semibold text-white">Let's start</p>
+          ><p class="mx-3 font-semibold text-white">Search</p>
         </Button>
       </div>
     </div>
