@@ -10,16 +10,29 @@ import SearchBar from "../../components/search-bar/SearchBar.vue";
 
 const router = useRouter();
 
+// Navigate to home page
+const navigateToHomePage = () => {
+  router.push({ name: "LandingPage" });
+};
+
+// Navigate to price details page
 const navigateToPricePage = () => {
   router.push({ name: "PriceDetailsPage" });
 };
 
-const toggleDarkMode = () => {
-  document.documentElement.classList.toggle("dark");
+// Navigate to favourites
+const addFavourites = () => {
+  router.push({ name: "PriceDetailsPage" });
 };
 
+// Navigate to github
 const navigateToGithub = () => {
   window.location.href = "https://github.com/mesh7";
+};
+
+// Toggle dark mode
+const toggleDarkMode = () => {
+  document.documentElement.classList.toggle("dark");
 };
 
 const products = ref([
@@ -80,6 +93,7 @@ const responsiveOptions = ref([
         rounded
         aria-label="Search"
         size="large"
+        @click="navigateToHomePage()"
       />
       <Button
         icon="pi pi-user"
@@ -96,6 +110,7 @@ const responsiveOptions = ref([
         rounded
         aria-label="Heart"
         size="large"
+        @click="addFavourites()"
       />
       <ToggleSwitch size="small" @click="toggleDarkMode" />
     </nav>
